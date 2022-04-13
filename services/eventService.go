@@ -34,3 +34,13 @@ func (u *eventService) Save(x entity.EventEntity) error {
 	}
 	return nil
 }
+
+func (u *eventService) FindEvent() ([]entity.EventEntity, error) {
+	model := entity.NewEventEntity()
+	list, err := model.FindEvent()
+	if err != nil {
+		config.ResponseStruct.Set(6002)
+		return list, err
+	}
+	return list, nil
+}

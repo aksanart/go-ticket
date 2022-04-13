@@ -27,6 +27,11 @@ func (m MockData) FindAll() string {
 	return args.Get(0).(string)
 }
 
+func (m MockData) FindUserByEmail(x string) (user1 entity.UserEntity, err error) {
+	args := m.Called()
+	return user1, args.Error(1)
+}
+
 func (m MockData) Save(entity.UserEntity) error {
 	args := m.Called()
 	return args.Error(0)

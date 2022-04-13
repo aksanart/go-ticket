@@ -1,0 +1,751 @@
+{
+	"info": {
+		"_postman_id": "a36b5fa4-ae86-4a62-ab36-7ca10d14b092",
+		"name": "ticket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"aksan\",\r\n    \"email\":\"aksan@gmail.com\",\r\n    \"password\":\"aksan\",\r\n    \"name\":\"aksan\",\r\n    \"gender\":\"male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/users/register",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success register user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"aksan\",\r\n    \"email\":\"aksan@gmail.com\",\r\n    \"password\":\"aksan\",\r\n    \"name\":\"aksan\",\r\n    \"gender\":\"male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/users/register",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 19:39:04 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "79"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 1000,\n    \"message\": \"success register user\",\n    \"status\": \"SUCCESS\",\n    \"value\": null\n}"
+				},
+				{
+					"name": "failed register user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/users/register",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 19:46:54 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "496"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 2001,\n    \"message\": \"Key: 'UserEntity.Username' Error:Field validation for 'Username' failed on the 'required' tag\\nKey: 'UserEntity.Email' Error:Field validation for 'Email' failed on the 'email' tag\\nKey: 'UserEntity.Password' Error:Field validation for 'Password' failed on the 'required' tag\\nKey: 'UserEntity.Name' Error:Field validation for 'Name' failed on the 'required' tag\\nKey: 'UserEntity.Gender' Error:Field validation for 'Gender' failed on the 'required' tag\",\n    \"status\": \"FAILED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "create event",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"konser noah\",\r\n    \"price\":1000,\r\n    \"ticket_available\":12\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/event/create",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"event",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success create event",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"acara baru\",\r\n    \"ticket_available\":12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/event/create",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"event",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 19:45:27 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "76"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 1000,\n    \"message\": \"success save event\",\n    \"status\": \"SUCCESS\",\n    \"value\": null\n}"
+				},
+				{
+					"name": "failed create event",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"acara baru\",\r\n    \"ticket_available\":\"ssss\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/event/create",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"event",
+								"create"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 19:47:29 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "137"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 3001,\n    \"message\": \"json: cannot unmarshal string into Go struct field EventEntity.ticket_available of type int32\",\n    \"status\": \"FAILED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "checkout tiket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_name\":\"konser noah\",\r\n    \"username\":\"aksan\",\r\n    \"ticket_checkout\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/transaction/checkout",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"transaction",
+						"checkout"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success checkout tiket",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"event_name\":\"konser noah\",\r\n    \"username\":\"aksan\",\r\n    \"ticket_checkout\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/transaction/checkout",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"transaction",
+								"checkout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 21:26:32 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "74"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 1000,\n    \"message\": \"success checkout\",\n    \"status\": \"SUCCESS\",\n    \"value\": null\n}"
+				},
+				{
+					"name": "failed checkout tiket",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"event_name\":\"konser noah\",\r\n    \"username\":\"aksan\",\r\n    \"ticket_checkout\":200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/transaction/checkout",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"transaction",
+								"checkout"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 21:42:47 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "65"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 4003,\n    \"message\": \"transaction sudah ada\",\n    \"status\": \"FAILED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "bayar tiket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price_unik\":2001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/transaction/bayar",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"transaction",
+						"bayar"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success bayar tiket",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price_unik\":2001\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/transaction/bayar",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"transaction",
+								"bayar"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 21:48:12 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "74"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 1000,\n    \"message\": \"success membayar\",\n    \"status\": \"SUCCESS\",\n    \"value\": null\n}"
+				},
+				{
+					"name": "failed bayar tiket",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price_unik\":20010\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/transaction/bayar",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"transaction",
+								"bayar"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 21:48:43 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 5003,\n    \"message\": \"transaction tidak ditemukan\",\n    \"status\": \"FAILED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "list user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/users/list?username=aksan",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"users",
+						"list"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "aksan"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "list user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/users/list?username=aksan",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"users",
+								"list"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "aksan"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 22:24:09 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "226"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 1000,\n    \"message\": \"success register user\",\n    \"status\": \"SUCCESS\",\n    \"value\": {\n        \"username\": \"aksan\",\n        \"email\": \"aksan@gmail.com\",\n        \"password\": \"$2a$08$C.x1yWjZYG8c08Yf46KszenIbda0jFOVmnFTiFfDW3yiDE5RkvBfy\",\n        \"name\": \"aksan\",\n        \"gender\": \"male\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "list  event",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/event/list",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"event",
+						"list"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "list  event",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/event/list",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"event",
+								"list"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 22:23:44 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "130"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 1000,\n    \"message\": \"success list event\",\n    \"status\": \"SUCCESS\",\n    \"value\": [\n        {\n            \"name\": \"konser noah\",\n            \"ticket_available\": 8,\n            \"Price\": 1000\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "list  transaction user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/transaction/list?username=aksan",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"transaction",
+						"list"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "aksan"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "list  transaction user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/transaction/list?username=aksan",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"transaction",
+								"list"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "aksan"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 13 Apr 2022 22:34:23 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "177"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 1000,\n    \"message\": \"success list\",\n    \"status\": \"SUCCESS\",\n    \"value\": [\n        {\n            \"event_name\": \"konser noah\",\n            \"username\": \"aksan\",\n            \"ticket_checkout\": 2,\n            \"price\": 2000,\n            \"price_unik\": 2001,\n            \"status\": 0\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}

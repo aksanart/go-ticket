@@ -119,3 +119,13 @@ func (u *transactionService) Save(x config.CheckoutParam) error {
 	}
 	return nil
 }
+
+func (u *transactionService) FindAllTransactionUser(username string) ([]entity.TransactionEntity, error) {
+	model := entity.NewTransactionEntity()
+	list, err := model.FindAllTransactionUser(username)
+	if err != nil {
+		config.ResponseStruct.Set(6002)
+		return list, err
+	}
+	return list, nil
+}

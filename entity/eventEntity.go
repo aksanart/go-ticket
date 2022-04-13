@@ -17,6 +17,7 @@ type EventIntf interface {
 	FindEventByName(x string) (EventEntity, error)
 	Save(EventEntity) error
 	Update(EventEntity) error
+	FindEvent(e string) ([]EventEntity, error)
 }
 
 func NewEventEntity() *EventEntity {
@@ -54,4 +55,24 @@ func (u *EventEntity) UpdateTicket(e EventEntity, tiket int32) error {
 		return err
 	}
 	return nil
+}
+
+func (u *EventEntity) FindEvent() ([]EventEntity, error) {
+	var data []EventEntity
+	coll := config.Mongo.Conn.Collection("event")
+	filter := bson.M{}
+	curs, err := coll.Find(context.Background(), filter)
+	if err != nil {
+		return data, err
+	}
+	defer curs.Close(context.Background())
+	for curs.Next(context.Background()) {
+		var singleRow EventEntity
+		err := curs.Decode(&singleRow)
+		if err != nil {
+			return data, err
+		}
+		data = append(data, singleRow)
+	}
+	return data, nil
 }

@@ -57,3 +57,28 @@ func TransactionPay(repo repository.TransactionRepository) gin.HandlerFunc {
 		}.Do()
 	}
 }
+
+func TransactionList(repo repository.TransactionRepository) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		config.Block{
+			Try: func() {
+				username := c.Query("username")
+				if username == "" {
+					config.ResponseStruct.Set(7001)
+					config.Throw("username wajib")
+				}
+				list, err := repo.FindAllTransactionUser(username)
+				if err != nil {
+					config.Throw(err.Error())
+				}
+				config.Response(c, "success list", list)
+			},
+			Catch: func(e config.Exception) {
+				config.ErrorResponse(c, e)
+			},
+			Finally: func() {
+				fmt.Println("selesai CreateEvent")
+			},
+		}.Do()
+	}
+}

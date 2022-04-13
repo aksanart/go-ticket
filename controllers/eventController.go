@@ -33,3 +33,23 @@ func CreateEvent(repo repository.EventRepository) gin.HandlerFunc {
 		}.Do()
 	}
 }
+
+func EventList(repo repository.EventRepository) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		config.Block{
+			Try: func() {
+				list, err := repo.FindEvent()
+				if err != nil {
+					config.Throw(err.Error())
+				}
+				config.Response(c, "success list event", list)
+			},
+			Catch: func(e config.Exception) {
+				config.ErrorResponse(c, e)
+			},
+			Finally: func() {
+				fmt.Println("selesai CreateEvent")
+			},
+		}.Do()
+	}
+}

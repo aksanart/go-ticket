@@ -21,6 +21,7 @@ type TransactionIntf interface {
 	FindTransaction(filter interface{}) (TransactionEntity, error)
 	FindTransactionCount(filter interface{}) (int64, error)
 	UpdateStatus(e float64) error
+	FindAllTransactionUser(username string) ([]TransactionEntity, error)
 }
 
 func NewTransactionEntity() *TransactionEntity {
@@ -59,7 +60,7 @@ func (u *TransactionEntity) FindTransactionCount(filter interface{}) (int64, err
 }
 
 func (u *TransactionEntity) UpdateStatus(e float64) error {
-	coll := config.Mongo.Conn.Collection("event")
+	coll := config.Mongo.Conn.Collection("transaction")
 	filter := bson.M{"price_unik": e}
 	update := bson.M{"$set": bson.M{"status": 1}}
 	_, err := coll.UpdateOne(context.TODO(), filter, update)
@@ -67,4 +68,24 @@ func (u *TransactionEntity) UpdateStatus(e float64) error {
 		return err
 	}
 	return nil
+}
+
+func (u *TransactionEntity) FindAllTransactionUser(username string) ([]TransactionEntity, error) {
+	var data []TransactionEntity
+	coll := config.Mongo.Conn.Collection("transaction")
+	filter := bson.M{"username": username}
+	curs, err := coll.Find(context.Background(), filter)
+	if err != nil {
+		return data, err
+	}
+	defer curs.Close(context.Background())
+	for curs.Next(context.Background()) {
+		var singleRow TransactionEntity
+		err := curs.Decode(&singleRow)
+		if err != nil {
+			return data, err
+		}
+		data = append(data, singleRow)
+	}
+	return data, nil
 }
