@@ -8,8 +8,9 @@ import (
 )
 
 type EventEntity struct {
-	Name   string `json:"name" bson:"name" binding:"required"`
-	Ticket int32  `json:"ticket_available" bson:"ticket_available" binding:"required,numeric"`
+	Name   string  `json:"name" bson:"name" binding:"required"`
+	Ticket int32   `json:"ticket_available" bson:"ticket_available" binding:"required,numeric"`
+	Price  float64 `json:"Price" bson:"Price" binding:"required"`
 }
 
 type EventIntf interface {
@@ -23,16 +24,16 @@ func NewEventEntity() *EventEntity {
 }
 
 func (u *EventEntity) FindEventByName(e string) (EventEntity, error) {
-	var user EventEntity
+	var data EventEntity
 	coll := config.Mongo.Conn.Collection("event")
 	filter := bson.M{"name": e}
-	err := coll.FindOne(context.Background(), filter).Decode(&user)
+	err := coll.FindOne(context.Background(), filter).Decode(&data)
 	if err != nil {
 		if err.Error() != "mongo: no documents in result" {
-			return user, err
+			return data, err
 		}
 	}
-	return user, nil
+	return data, nil
 }
 
 func (u *EventEntity) Save(e EventEntity) error {
@@ -46,7 +47,7 @@ func (u *EventEntity) Save(e EventEntity) error {
 
 func (u *EventEntity) UpdateTicket(e EventEntity, tiket int32) error {
 	coll := config.Mongo.Conn.Collection("event")
-	filter := bson.M{"name": e}
+	filter := bson.M{"name": e.Name}
 	update := bson.M{"$set": bson.M{"ticket_available": tiket}}
 	_, err := coll.UpdateOne(context.TODO(), filter, update)
 	if err != nil {
